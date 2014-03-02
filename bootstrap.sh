@@ -4,6 +4,7 @@ yum -y update
 yum -y install setuptool
 service iptables stop
 chkconfig iptables off
+yum -y install openssh-server
 yum -y install httpd mod_ssl
 chkconfig httpd on
 service httpd start
@@ -16,5 +17,7 @@ mysqladmin -u root password 'password'
 mkdir /vagrant/petclinic
 cd /vagrant/petclinic
 mkdir www logs tmp
+cd /vagrant/
+wget https://dl.dropboxusercontent.com/u/9937469/petclinic.conf
 cp /vagrant/petclinic.conf /etc/httpd/conf.d/
 service httpd restart
